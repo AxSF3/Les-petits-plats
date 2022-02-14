@@ -1,4 +1,4 @@
-/*const filteredRecipes = (recipes, searchBar) => {
+const filteredRecipes = (recipes, searchBar) => {
 	searchBar.addEventListener("keyup", (e) => {
 		if (e.target.value.length >= 3) {
 			recipesSection.innerHTML = "";
@@ -24,4 +24,4 @@
 		}
 
 	});
-};*/
+};
