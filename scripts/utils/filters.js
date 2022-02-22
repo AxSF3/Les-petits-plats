@@ -26,6 +26,7 @@ const generateFilters = (recipes) => {
 			ingResult.style.display = 'grid'
 			ingredientChevron.classList.replace("fa-chevron-down", "fa-chevron-up");
 			ingResult.innerHTML = "";
+			/*ingredientInput.style.width = "600px";*/
 
 			apparatusResult.style.display = 'none'
 			apparatusChevron.classList.replace("fa-chevron-up", "fa-chevron-down");

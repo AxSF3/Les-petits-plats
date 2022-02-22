@@ -25,6 +25,7 @@ const researchOnFilters = (recipes) => {
 			);
 		});
 	});
+
 	if (result.length) {
 		recipesSection.innerHTML = "";
 		createRecipesCard(result);
@@ -56,3 +57,25 @@ const removeFilter = (selectedFilter, arrayOfFilters, recipes) => {
 		researchOnFilters(recipes, arrayOfFilters);
 	}
 };
+
+const searchBarProcessing = (recipes) => {
+
+globalSearchBar.addEventListener("keyup", (e) => {
+	if (e.target.value.length >= 3) {
+		recipesSection.innerHTML = "";
+	
+/*
+		if (!result.length) {
+			return recipesSection.innerHTML +=  `<div class="no__results"> 
+			Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.
+			</div>`
+			}*/
+		} else if (e.target.value.length <= 3) {
+		recipesSection.innerHTML = "";
+		createRecipesCard(recipes);
+		}
+
+	});
+
+}
+
