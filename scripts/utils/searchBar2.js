@@ -11,39 +11,48 @@ const filteredRecipes = (recipes, searchBar) => {
 				const includesInName = name.toLowerCase().includes(query);
 				const includesInDescription = description.toLowerCase().includes(query);
 			
-				// let includesInIngredients = false;
-				// let includesApparatus = false;
-				// let includesUstensils = false;
-			
 					for (let ii = 0; ii < ingredients.length; ii++) {
 						if (ingredients[ii].ingredient.toLowerCase().includes(query)) {
 							results.push(recipes[i]);
+							continue;
 						}
 					}
 			
 					for (let a = 0; a < appliance.length; a++) {
 						if (appliance[a].toLowerCase().includes(query)) {
 							results.push(recipes[i]);
+							continue;
 						}
 					}
 			
 					for (let u = 0; u < ustensils.length; u++) {
 						if (ustensils[u].toLowerCase().includes(query)) {
 							results.push(recipes[i]);
+							continue;
 						}
 					}
 
 					for (let n = 0; n < name.length; n++) {
 						if (name[n].toLowerCase().includes(query)) {
 							results.push(recipes[i]);
+							continue;
 						}
 					}
-				
-				/*
-					if (includesInName || includesInDescription || includesInIngredients || includesApparatus || includesUstensils) {
-						results.push(recipes[i]);
+
+					let il = 0;
+					
+					while (il < 0) {
+						il++;
+  						
+						if (includesInName || includesInDescription) {
+							results.push(recipes[i]);
+    						continue;
+  						}
+
 					}
-				*/
+
+					console.log(results)
+					
 			}
        
 			if (results.length) {
