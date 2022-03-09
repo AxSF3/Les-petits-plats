@@ -22,11 +22,14 @@ const generateFilters = (recipes) => {
 		if(ingResult.style.display === 'grid') {
 			ingResult.style.display = 'none'
 			ingredientChevron.classList.replace("fa-chevron-up", "fa-chevron-down");
+			//ingredientInput.style.width = "100%";
+			ingredientInput.classList.remove("open");
 		} else {
 			ingResult.style.display = 'grid'
 			ingredientChevron.classList.replace("fa-chevron-down", "fa-chevron-up");
 			ingResult.innerHTML = "";
-			/*ingredientInput.style.width = "600px";*/
+			//ingredientInput.style.width = "600px";
+			ingredientInput.classList.add("open");
 
 			apparatusResult.style.display = 'none'
 			apparatusChevron.classList.replace("fa-chevron-up", "fa-chevron-down");
@@ -85,6 +88,7 @@ const listenOnIngredientsItems = () => {
 			createFiltersBar(selectedFiltersUnduplicated, recipes);
 			ingResult.style.display = "none"
 			ingredientChevron.classList.replace("fa-chevron-up", "fa-chevron-down");
+			ingredientInput.style.width = "100%";
 		});
 	});
 };
@@ -103,6 +107,7 @@ function openCloseApp() {
 
 		ingResult.style.display = 'none'
 		ingredientChevron.classList.replace("fa-chevron-up", "fa-chevron-down");
+		ingredientInput.classList.remove("open");
 
 		ustensilsResult.style.display = 'none'
 		ustensilsChevron.classList.replace("fa-chevron-up", "fa-chevron-down");
@@ -174,6 +179,7 @@ function openCloseUst() {
 
 		ingResult.style.display = 'none'
 		ingredientChevron.classList.replace("fa-chevron-up", "fa-chevron-down");
+		ingredientInput.classList.remove("open");
 
 		apparatusResult.style.display = 'none'
 		apparatusChevron.classList.replace("fa-chevron-up", "fa-chevron-down");
