@@ -117,6 +117,8 @@ body {
     gap: 0.5rem;
     grid-template-columns: repeat(3, 3fr);
     display: none;
+    position: absolute;
+    width: 95%;
   }
   
   .ingredient__item {
@@ -126,7 +128,6 @@ body {
   .ingredient__input::placeholder {
     color: white;
   }
-
 
 
 /* APPAREILS */
@@ -203,7 +204,6 @@ body {
   background-color: #ED6454;
   color: white;
   padding: 0.8rem;
-  margin-top: -15px;
   list-style-type: none;
   gap: 0.5rem;
   grid-template-columns: repeat(3, 3fr);
@@ -364,6 +364,10 @@ body {
     grid-template-columns: repeat(3, 3fr);
     display: none;
     width: 620px;
+  }
+
+  .open {
+    width: 600px;
   }
 
   .apparatus__results {
