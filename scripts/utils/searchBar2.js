@@ -5,7 +5,7 @@ const filteredRecipes = (recipes, searchBar) => {
 			const results = [];
 			recipesSection.innerHTML = "";
 			const query = e.target.value;
-			//console.log(recipes)
+			console.log(recipes)
 
 			for (let i = 0; i < recipes.length; i++) {
 
@@ -71,8 +71,10 @@ const filteredRecipes = (recipes, searchBar) => {
 						}
 					}
 
+					//console.log(results.push(recipes[49]))
+
 			}
-       
+
 			if (results.length) {
 				recipesSection.innerHTML = "";
 				createRecipesCard(results);
