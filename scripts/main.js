@@ -18,6 +18,7 @@ const createRecipesCard = (recipes) => {
     
   createRecipesCard(recipes)
   listenOnInputs(recipes);
+  searchBarProcessing(recipes)
   filteredRecipes(recipes, globalSearchBar)
 
 };
