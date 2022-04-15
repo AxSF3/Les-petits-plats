@@ -354,7 +354,6 @@ body {
   }
 
   .ing-result {
-    position: absolute;
     background-color: #3282F7;
     color: white;
     padding: 0.8rem;
@@ -383,22 +382,22 @@ body {
     display: none;
     list-style-type: none;
     gap: 0.5rem;
-    grid-template-columns: repeat(3, 3fr);
+    grid-template-columns: repeat(2, 2fr);
     position: absolute;
   
   }
 
   .ustensils-result {
     background-color: #ED6454;
-    position: absolute;
     color: white;
     padding: 0.8rem;
     list-style-type: none;
     gap: 0.5rem;
     grid-template-columns: repeat(3, 3fr);
-    width: 500px;
-    margin-left: 400px;
+    position: absolute;
+    /*margin-left: 100px;*/
     margin-top: 350px;
+    margin-top: -10px;
   }
 
   .results {
