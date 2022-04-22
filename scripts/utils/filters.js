@@ -1,7 +1,5 @@
 const generateFilters = (recipes) => {
-	let ingredients = [];
-	let apparatus = [];
-	let ustensils = [];
+
 	recipes.forEach((recipe) => {
 	  ingredients = [
 	  ...new Set([...ingredients, ...recipe.ingredients.map((i) => i.ingredient)])].sort();
@@ -11,10 +9,11 @@ const generateFilters = (recipes) => {
 	return { ingredients, ustensils, apparatus };
   };
 
-	const listenOnInputs = (recipes) => {
+  const listenOnInputs = (recipes) => {
 		
-	const { ingredients, ustensils, apparatus } = generateFilters(recipes);
+	let { ingredients, ustensils, apparatus } = generateFilters(recipes);
 
+	 
 	/* INGREDIENTS */
 
 	function openCloseIng() {
@@ -22,13 +21,10 @@ const generateFilters = (recipes) => {
 		if(ingResult.style.display === 'grid') {
 			ingResult.style.display = 'none'
 			ingredientChevron.classList.replace("fa-chevron-up", "fa-chevron-down");
-			//ingredientInput.style.width = "100%";
 			ingredientInput.classList.remove("open");
 		} else {
 			ingResult.style.display = 'grid'
 			ingredientChevron.classList.replace("fa-chevron-down", "fa-chevron-up");
-			ingResult.innerHTML = "";
-			//ingredientInput.style.width = "600px";
 			ingredientInput.classList.add("open");
 
 			apparatusResult.style.display = 'none'
@@ -41,9 +37,11 @@ const generateFilters = (recipes) => {
 
 	}
 
+
 ingredientChevron.addEventListener("click", () => {
 
 	openCloseIng();
+	ingResult.innerHTML = "";
 
 	ingredients.forEach((ingredient) => {
 
@@ -137,6 +135,7 @@ apparatusInput.addEventListener("keyup", (e) => {
 		
 		const results = apparatus.filter((apparatus) => {
 			apparatusResult.style.display = 'none';
+			ingredientInput.classList.remove("open");
 			return apparatus.toLowerCase().includes(query);
 		});
 		
@@ -184,6 +183,7 @@ function openCloseUst() {
 		apparatusResult.style.display = 'none'
 		apparatusChevron.classList.replace("fa-chevron-up", "fa-chevron-down");
 	}
+
 }
 
 ustensilsChevron.addEventListener("click", () => {
@@ -208,6 +208,7 @@ ustensilsInput.addEventListener("keyup", (e) => {
 		
 		const results = ustensils.filter((ustensil) => {
 			ustensilsResult.style.display = 'none';
+			ingredientInput.classList.remove("open");
 			return ustensil.toLowerCase().includes(query);
 		});
 		

@@ -1,6 +1,12 @@
 /* DOM elements */
 
 const selectedFilters = [];
+//const results = [];
+
+let ingredients = [];
+let apparatus = [];
+let ustensils = [];
+
 
 const filtersBar = document.querySelector(".research__filters");
 const globalSearchBar = document.querySelector(".research__bar__input");

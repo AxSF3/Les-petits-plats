@@ -1,10 +1,5 @@
-
-
-
-
 const filteredRecipes = (recipes, query) => {
 	
-		
 			return recipes.filter((recipe) => {
 				return (
 					recipe.name.toLowerCase().includes(query) ||
@@ -16,10 +11,3 @@ const filteredRecipes = (recipes, query) => {
 				
 		
 	};
-
-
-
-
-
-
-
