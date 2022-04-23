@@ -8,10 +8,13 @@ const createFiltersBar = (selectedFiltersUnduplicated, recipes) => {
 	researchOnFilters(recipes, selectedFiltersUnduplicated);
 };
 
+let result;
+
 const researchOnFilters = (recipes) => {
 	const filterQuery = document.querySelectorAll(".filter__query");
 	const filters = Array.from(filterQuery);
-	const result = recipes.filter((recipe) => {
+	result = recipes.filter((recipe) => {
+		let test = recipe;
 		return filters.every((item) => {
 			const formatedItem = item.textContent.toLowerCase();
 			return (
@@ -30,59 +33,7 @@ const researchOnFilters = (recipes) => {
 		createRecipesCard(result);
 		console.log(result)
 		listenOnFilterBar(filters, recipes);
-
-		  result.forEach((result) => {
-		 
-			ingredients = [...new Set(result.ingredients.map((i) => i.ingredient))].sort();
-			ustensils = [...new Set(result.ustensils.map((u) => u))].sort();
-			apparatus = [...new Set([result.appliance])].sort();
 		
-			console.log(ingredients)
-			console.log(ustensils)
-			console.log(apparatus)
-			ingredientChevron.addEventListener("click", () => {
-			
-			ingResult.innerHTML = "";
-			
-			ingredients.forEach((ingredient) => {
-
-				return ingResult.innerHTML += `<li class="ingredient__item">${ingredient}</li>`;
-				
-			});
-
-		})
-
-		ustensilsChevron.addEventListener("click", () => {
-			
-			ustensilsResult.innerHTML = "";
-			
-			ustensils.forEach((ustensil) => {
-
-				return ustensilsResult.innerHTML += `<li class="ingredient__item">${ustensil}</li>`;
-				
-			});
-
-		})
-
-		apparatusChevron.addEventListener("click", () => {
-			
-			apparatusResult.innerHTML = "";
-			
-			apparatus.forEach((apparatus) => {
-
-				return apparatusResult.innerHTML += `<li class="ingredient__item">${apparatus}</li>`;
-				
-			});
-
-		})
-
-		
-
-		
-
-		});
-		
-
 	} else if (!result.length) {
 		listenOnFilterBar(filters, recipes);
 		recipesSection.innerHTML = "";

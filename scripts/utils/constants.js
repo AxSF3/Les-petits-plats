@@ -6,6 +6,7 @@ const selectedFilters = [];
 let ingredients = [];
 let apparatus = [];
 let ustensils = [];
+//let result;
 
 
 const filtersBar = document.querySelector(".research__filters");

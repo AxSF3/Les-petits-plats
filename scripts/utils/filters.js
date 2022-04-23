@@ -37,17 +37,45 @@ const generateFilters = (recipes) => {
 
 	}
 
-
 ingredientChevron.addEventListener("click", () => {
 
 	openCloseIng();
-	ingResult.innerHTML = "";
 
 	ingredients.forEach((ingredient) => {
+   
+		console.log(ingredient)
 
 		return ingResult.innerHTML += `<li class="ingredient__item">${ingredient}</li>`;
 		
 	});
+
+
+	if (result) {
+
+		result.forEach(result => {
+		let ingredient = [...new Set([...result.ingredients.map((i) => i.ingredient)])].sort();
+		//ustensils = [...new Set(result.ustensils.map((u) => u))].sort();
+		//apparatus = [...new Set([result.appliance])].sort();
+
+
+		  console.log(result.ingredients);
+		  console.log(result)
+		  console.log(ingredients)
+
+		 ingResult.innerHTML = "";
+
+		 ingredient.forEach((ingredient) => {
+   
+		   console.log(ingredient)
+   
+		   return ingResult.innerHTML += `<li class="ingredient__item">${ingredient}</li>`;
+		   
+	   });
+
+		});
+
+	  }
+
 	listenOnIngredientsItems();
 })
 
@@ -62,6 +90,7 @@ ingredientInput.addEventListener("keyup", (e) => {
 		const results = ingredients.filter((ingredient) => {
 			ingResult.style.display = 'none';
 			return ingredient.toLowerCase().includes(query);
+
 		});
 		
 		results.forEach((result) => {
