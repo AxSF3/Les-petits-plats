@@ -53,7 +53,7 @@ ingredientChevron.addEventListener("click", () => {
 	if (result) {
 
 		result.forEach(result => {
-		let ingredient = [...new Set([...result.ingredients.map((i) => i.ingredient)])].sort();
+		ingredients = [...new Set([...result.ingredients.map((i) => i.ingredient)])].sort();
 		//ustensils = [...new Set(result.ustensils.map((u) => u))].sort();
 		//apparatus = [...new Set([result.appliance])].sort();
 
@@ -64,7 +64,7 @@ ingredientChevron.addEventListener("click", () => {
 
 		 ingResult.innerHTML = "";
 
-		 ingredient.forEach((ingredient) => {
+		 ingredients.forEach((ingredient) => {
    
 		   console.log(ingredient)
    
