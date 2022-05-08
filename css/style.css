@@ -291,6 +291,14 @@ body {
   padding: .3rem .3rem;
 } 
 
+.cacher {
+  display: none;
+}
+
+.afficher {
+  display: block;
+}
+
   
 /* LARGE DEVICES */
 
@@ -395,8 +403,6 @@ body {
     gap: 0.5rem;
     grid-template-columns: repeat(3, 3fr);
     position: absolute;
-    /*margin-left: 100px;*/
-    margin-top: 350px;
     margin-top: -10px;
   }
 
