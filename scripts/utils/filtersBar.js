@@ -1,4 +1,5 @@
 const createFiltersBar = (selectedFiltersUnduplicated, recipes) => {
+
 	filtersBar.innerHTML = "";
 	selectedFiltersUnduplicated.forEach((filter) => {
 
@@ -8,10 +9,12 @@ const createFiltersBar = (selectedFiltersUnduplicated, recipes) => {
 	researchOnFilters(recipes, selectedFiltersUnduplicated);
 };
 
+let result;
+
 const researchOnFilters = (recipes) => {
 	const filterQuery = document.querySelectorAll(".filter__query");
 	const filters = Array.from(filterQuery);
-	const result = recipes.filter((recipe) => {
+	result = recipes.filter((recipe) => {
 		return filters.every((item) => {
 			const formatedItem = item.textContent.toLowerCase();
 			return (
@@ -20,7 +23,7 @@ const researchOnFilters = (recipes) => {
 				}) ||
 				recipe.appliance.toLowerCase().includes(formatedItem) ||
 				recipe.ustensils.some((ustensil) => {
-					return ustensil.toLowerCase() === formatedItem;
+					return ustensil.toLowerCase() === formatedItem;				
 				})
 			);
 		});
@@ -30,6 +33,7 @@ const researchOnFilters = (recipes) => {
 		recipesSection.innerHTML = "";
 		createRecipesCard(result);
 		listenOnFilterBar(filters, recipes);
+		
 	} else if (!result.length) {
 		listenOnFilterBar(filters, recipes);
 		recipesSection.innerHTML = "";
@@ -37,19 +41,30 @@ const researchOnFilters = (recipes) => {
 	}
 };
 
+let filtredRecipes1;
+
 const listenOnFilterBar = (filters, recipes) => {
 	filters.forEach((filter) => {
 		filter.addEventListener("click", () => {
-			removeFilter(filter, filters, recipes);
+		removeFilter(filter, filters, recipes);
+
+		//Quand on enlève un filtre, on affiche les resultats de la barre de recherche si il y en a une
+		if (globalSearchBar.value.length >= 3) {
+		
+			filtredRecipes1 = filteredRecipes(recipes, globalSearchBar.value);
+			recipesSection.innerHTML = "";
+			createRecipesCard(filtredRecipes1);
+
+			}
 		});
 	});
 };
 
 const removeFilter = (selectedFilter, arrayOfFilters, recipes) => {
-	const index = arrayOfFilters.indexOf(selectedFilter);
-	arrayOfFilters.slice(index, 0);
+	
 	selectedFilter.remove();
-	selectedFilters.splice(0, selectedFilters.length)
+	selectedFilters.splice(selectedFilters.indexOf(selectedFilter.textContent),1)
+
 	if (!arrayOfFilters.length) {
 		recipesSection.innerHTML = "";
 		createRecipesCard(recipes);
@@ -58,24 +73,60 @@ const removeFilter = (selectedFilter, arrayOfFilters, recipes) => {
 	}
 };
 
+let results;
+
 const searchBarProcessing = (recipes) => {
 
-globalSearchBar.addEventListener("keyup", (e) => {
-	if (e.target.value.length >= 3) {
+	globalSearchBar.addEventListener("keyup", (e) => {
+
+		if (e.target.value.length >= 3) {
+
+			recipesSection.innerHTML = "";
+			results = filteredRecipes(recipes, e.target.value);
+
+		if (results.length === 0) {
+				return recipesSection.innerHTML +=  `<div class="no__results"> 
+				Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.
+				</div>`
+			} else {	
+			recipesSection.innerHTML = "";
+			createRecipesCard(results);
+		}
+	} else if (result) {
 		recipesSection.innerHTML = "";
-	
-/*
-		if (!result.length) {
-			return recipesSection.innerHTML +=  `<div class="no__results"> 
-			Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.
-			</div>`
-			}*/
-		} else if (e.target.value.length <= 3) {
+		createRecipesCard(result);
+	} else {
 		recipesSection.innerHTML = "";
 		createRecipesCard(recipes);
-		}
+	}
 
-	});
+	
+})
 
 }
 
+
+
+/*const searchBarProcessing = (recipes) => {
+
+	globalSearchBar.addEventListener("keyup", (e) => {
+		if (e.target.value.length >= 3) {
+			
+			recipesSection.innerHTML = "";
+			const results = filteredRecipes(recipes, e.target.value);
+
+			if (results.length === 0) {
+				return recipesSection.innerHTML +=  `<div class="no__results"> 
+				Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.
+				</div>`
+			} else {
+			recipesSection.innerHTML = "";
+			createRecipesCard(results);
+			}
+		} else {
+			recipesSection.innerHTML = "";
+			createRecipesCard(recipes);
+		}
+
+		})
+}*/
