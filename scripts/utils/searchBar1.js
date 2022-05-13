@@ -1,5 +1,5 @@
 const filteredRecipes = (recipes, query) => {
-
+	console.log(result)
 	if (result) {
 
 		return result.filter((result) => {

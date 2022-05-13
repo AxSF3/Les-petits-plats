@@ -57,7 +57,13 @@ ingredientChevron.addEventListener("click", () => {
 		ingredients = [...new Set([].concat(...ingredients))].sort()
 
 		// Enlever l'élément cliqué
-		ingredients.splice(ingredients.indexOf(itemClicked.textContent),1)
+
+		selectedFilters.forEach((selectedFilter) => {
+   
+			ingredients.splice(ingredients.indexOf(selectedFilter),1)
+			
+		});
+
 
 		ingResult.innerHTML = "";
 
@@ -92,7 +98,12 @@ ingredientChevron.addEventListener("click", () => {
 			ingredients = [...new Set([].concat(...ingredients))].sort()
 
 			// Enlever de la liste l'ingrédient sur lequel on a cliqué
-			ingredients.splice(ingredients.indexOf(itemClicked.textContent),1)
+			selectedFilters.forEach((selectedFilter) => {
+   
+				ingredients.splice(ingredients.indexOf(selectedFilter),1)
+				
+			});
+	
 	
 			ingResult.innerHTML = "";
 	
@@ -171,16 +182,12 @@ const listenOnIngredientsItems = () => {
 
 	ingredientsItems.forEach((item) => {
 		item.addEventListener("click", () => {
-			console.log(selectedFilterss)
 			selectedFilters.push(item.textContent);
 			const selectedFiltersUnduplicated = [...new Set(selectedFilters)];
 			createFiltersBar(selectedFiltersUnduplicated, recipes);
 			ingResult.style.display = "none"
 			ingredientChevron.classList.replace("fa-chevron-up", "fa-chevron-down");
 			ingredientInput.style.width = "100%";
-
-			// Récupérer l'item cliqué
-			itemClicked = item;
 
 			// On refiltre la barre de recherche pour la prendre en compte
 			if (globalSearchBar.value.length >= 3) {
@@ -189,9 +196,6 @@ const listenOnIngredientsItems = () => {
 			createRecipesCard(resultFiltered);
 		
 		}	
-			
-
-
 
 		});
 	});
@@ -238,7 +242,11 @@ apparatusChevron.addEventListener("click", () => {
 			apparatus = [...new Set([].concat(...apparatus))].sort()
 
 			// Enlever l'élément cliqué
-			apparatus.splice(apparatus.indexOf(itemClicked),1)
+			selectedFilters.forEach((selectedFilter) => {
+   
+				apparatus.splice(apparatus.indexOf(selectedFilter),1)
+				
+			});
 	
 			apparatusResult.innerHTML = "";
 	
@@ -269,8 +277,15 @@ apparatusChevron.addEventListener("click", () => {
 			
 			filteredRecipe = filteredRecipes(recipes, globalSearchBar.value);
 	
-			apparatus = results.map(recipe => recipe.appliance)
+			apparatus = filteredRecipe.map(recipe => recipe.appliance)
 			apparatus = [...new Set([].concat(...apparatus))].sort()
+
+			// Enlever l'élément cliqué
+			selectedFilters.forEach((selectedFilter) => {
+   
+				apparatus.splice(apparatus.indexOf(selectedFilter),1)
+							
+			});
 	
 			apparatusResult.innerHTML = "";
 	
@@ -411,7 +426,11 @@ ustensilsChevron.addEventListener("click", () => {
 			ustensils = [...new Set([].concat(...ustensils))]
 
 			// Enlever l'élément cliqué
-			ustensils.splice(ustensils.indexOf(itemClicked),1)
+			selectedFilters.forEach((selectedFilter) => {
+   
+				ustensils.splice(ustensils.indexOf(selectedFilter),1)
+				
+			});
 	
 			ustensilsResult.innerHTML = "";
 	
@@ -442,8 +461,15 @@ ustensilsChevron.addEventListener("click", () => {
 			
 				filteredRecipe = filteredRecipes(recipes, globalSearchBar.value);
 	
-				ustensils = results.map(recipe => recipe.ustensils.map(ustensil => ustensil))
+				ustensils = filteredRecipe.map(recipe => recipe.ustensils.map(ustensil => ustensil))
 				ustensils = [...new Set([].concat(...ustensils))].sort();
+
+				// Enlever l'élément cliqué
+				selectedFilters.forEach((selectedFilter) => {
+   
+				ustensils.splice(ustensils.indexOf(selectedFilter),1)
+				
+			});
 	
 				ustensilsResult.innerHTML = "";
 	

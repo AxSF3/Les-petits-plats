@@ -1,4 +1,5 @@
 const createFiltersBar = (selectedFiltersUnduplicated, recipes) => {
+	
 
 	filtersBar.innerHTML = "";
 	selectedFiltersUnduplicated.forEach((filter) => {
@@ -83,6 +84,7 @@ const searchBarProcessing = (recipes) => {
 
 			recipesSection.innerHTML = "";
 			results = filteredRecipes(recipes, e.target.value);
+			console.log(results)
 
 		if (results.length === 0) {
 				return recipesSection.innerHTML +=  `<div class="no__results"> 

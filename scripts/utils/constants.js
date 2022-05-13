@@ -1,7 +1,6 @@
 /* DOM elements */
 
 const selectedFilters = [];
-const selectedFilterss = [];
 const ingredientsItems = document.querySelectorAll(".ingredient__item");
 let resultFiltered;
 let itemClicked;
