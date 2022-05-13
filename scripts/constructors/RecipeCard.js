@@ -33,7 +33,7 @@ class RecipeCard {
 			<ul class="recipe__card__list">
 
 			${						
-				/*...*/this._ingredients.map((ingredient) => {
+				this._ingredients.map((ingredient) => {
 				return `<li class="recipe__card__list__item"><strong>${ingredient.ingredient}</strong>
 				${ingredient.quantity ? ingredient.quantity : ""}
 				${ingredient.unit ? ingredient.unit : ""}
