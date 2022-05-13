@@ -1,12 +1,13 @@
 /* DOM elements */
 
 const selectedFilters = [];
-//const results = [];
+const ingredientsItems = document.querySelectorAll(".ingredient__item");
+let resultFiltered;
+let itemClicked;
 
 let ingredients = [];
 let apparatus = [];
 let ustensils = [];
-//let result;
 
 
 const filtersBar = document.querySelector(".research__filters");
