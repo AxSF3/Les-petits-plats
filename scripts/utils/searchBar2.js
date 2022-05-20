@@ -1,4 +1,4 @@
-/*const filteredRecipes = (recipes, query) => {
+const filteredRecipes = (recipes, query) => {
 
 	const results = [];
 
@@ -51,7 +51,7 @@
 
 		}
 		
-};*/
+};
 
 
 
