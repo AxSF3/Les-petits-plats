@@ -123,6 +123,13 @@ ingredientChevron.addEventListener("click", () => {
 		ingredients = result.map(recipe => recipe.ingredients.map(ingredient => ingredient.ingredient))
 		ingredients = [...new Set([].concat(...ingredients))].sort()
 
+		// Enlever de la liste l'ingrédient sur lequel on a cliqué
+		selectedFilters.forEach((selectedFilter) => {
+   
+			ingredients.splice(ingredients.indexOf(selectedFilter),1)
+						
+		});
+
 		ingResult.innerHTML = "";
 
 		ingredients.forEach((ingredient) => {
