@@ -131,7 +131,7 @@ ingredientChevron.addEventListener("click", () => {
 			
 		});
 		// Si il y a 2 caractères (donc plus de recherche), mettre la liste originale
-	  } else if(globalSearchBar.value.length === 2) {
+	  } else if(globalSearchBar.value.length <= 2) {
 
 		ingredients = recipes.map(recipe => recipe.ingredients.map(ingredient => ingredient.ingredient))
 		ingredients = [...new Set([].concat(...ingredients))].sort()
@@ -159,7 +159,7 @@ ingredientInput.addEventListener("keyup", (e) => {
 		
 		const results = ingredients.filter((ingredient) => {
 			ingResult.style.display = 'none';
-			return ingredient.toLowerCase().includes(query);
+			return ingredient.toLowerCase().includes(query.toLowerCase());
 
 		});
 		
@@ -315,7 +315,7 @@ apparatusChevron.addEventListener("click", () => {
 				
 			});
 			// Si il y a 2 caractères (donc plus de recherche), mettre la liste originale
-		  } else if(globalSearchBar.value.length === 2) {
+		  } else if(globalSearchBar.value.length <= 2) {
 	
 			apparatus = recipes.map(recipe => recipe.appliance)
 			apparatus = [...new Set([].concat(...apparatus))].sort()
@@ -345,7 +345,7 @@ apparatusInput.addEventListener("keyup", (e) => {
 		const results = apparatus.filter((apparatus) => {
 			apparatusResult.style.display = 'none';
 			ingredientInput.classList.remove("open");
-			return apparatus.toLowerCase().includes(query);
+			return apparatus.toLowerCase().includes(query.toLowerCase());
 		});
 		
 		results.forEach((result) => {
@@ -500,7 +500,7 @@ ustensilsChevron.addEventListener("click", () => {
 					
 				});
 				// Si il y a 2 caractères (donc plus de recherche), mettre la liste originale
-			  } else if(globalSearchBar.value.length === 2) {
+			  } else if(globalSearchBar.value.length <= 2) {
 		
 				ustensils = recipes.map(recipe => recipe.ustensils.map(ustensil => ustensil))
 				ustensils = [...new Set([].concat(...ustensils))].sort();
@@ -528,7 +528,7 @@ ustensilsInput.addEventListener("keyup", (e) => {
 		const results = ustensils.filter((ustensil) => {
 			ustensilsResult.style.display = 'none';
 			ingredientInput.classList.remove("open");
-			return ustensil.toLowerCase().includes(query);
+			return ustensil.toLowerCase().includes(query.toLowerCase());
 		});
 		
 		results.forEach((result) => {
