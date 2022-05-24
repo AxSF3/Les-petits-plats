@@ -160,6 +160,9 @@ ingredientInput.addEventListener("keyup", (e) => {
 
 	if (e.target.value.length >= 3) {
 
+		ingredients = recipes.map(recipe => recipe.ingredients.map(ingredient => ingredient.ingredient))
+		ingredients = [...new Set([].concat(...ingredients))].sort()
+
 		ingResult.innerHTML = '';
 
 		const query = e.target.value;
@@ -313,6 +316,13 @@ apparatusChevron.addEventListener("click", () => {
 
 			apparatus = result.map(recipe => recipe.appliance)
 			apparatus = [...new Set([].concat(...apparatus))].sort()
+
+			// Enlever de la liste l'ingrédient sur lequel on a cliqué
+			selectedFilters.forEach((selectedFilter) => {
+   
+				apparatus.splice(apparatus.indexOf(selectedFilter),1)
+						
+			});
 	
 			apparatusResult.innerHTML = "";
 	
@@ -344,6 +354,9 @@ apparatusChevron.addEventListener("click", () => {
 apparatusInput.addEventListener("keyup", (e) => {
 
 	if (e.target.value.length >= 3) {
+
+		apparatus = recipes.map(recipe => recipe.appliance)
+		apparatus = [...new Set([].concat(...apparatus))].sort()
 
 		apparatusResult.innerHTML = '';
 
@@ -498,6 +511,13 @@ ustensilsChevron.addEventListener("click", () => {
 				
 				ustensils = result.map(recipe => recipe.ustensils.map(ustensil => ustensil))
 				ustensils = [...new Set([].concat(...ustensils))].sort();
+
+				// Enlever de la liste l'ingrédient sur lequel on a cliqué
+				selectedFilters.forEach((selectedFilter) => {
+   
+					ustensils.splice(ustensils.indexOf(selectedFilter),1)
+						
+				});
 		
 				ustensilsResult.innerHTML = "";
 		
@@ -527,6 +547,9 @@ ustensilsChevron.addEventListener("click", () => {
 ustensilsInput.addEventListener("keyup", (e) => {
 
 	if (e.target.value.length >= 3) {
+
+		ustensils = recipes.map(recipe => recipe.ustensils.map(ustensil => ustensil))
+		ustensils = [...new Set([].concat(...ustensils))].sort();
 
 		ustensilsResult.innerHTML = '';
 
