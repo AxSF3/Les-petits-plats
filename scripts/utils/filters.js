@@ -160,6 +160,9 @@ ingredientInput.addEventListener("keyup", (e) => {
 
 	if (e.target.value.length >= 3) {
 
+		ingredients = recipes.map(recipe => recipe.ingredients.map(ingredient => ingredient.ingredient))
+		ingredients = [...new Set([].concat(...ingredients))].sort()
+
 		ingResult.innerHTML = '';
 
 		const query = e.target.value;
@@ -352,6 +355,9 @@ apparatusInput.addEventListener("keyup", (e) => {
 
 	if (e.target.value.length >= 3) {
 
+		apparatus = recipes.map(recipe => recipe.appliance)
+		apparatus = [...new Set([].concat(...apparatus))].sort()
+
 		apparatusResult.innerHTML = '';
 
 		const query = e.target.value;
@@ -541,6 +547,9 @@ ustensilsChevron.addEventListener("click", () => {
 ustensilsInput.addEventListener("keyup", (e) => {
 
 	if (e.target.value.length >= 3) {
+
+		ustensils = recipes.map(recipe => recipe.ustensils.map(ustensil => ustensil))
+		ustensils = [...new Set([].concat(...ustensils))].sort();
 
 		ustensilsResult.innerHTML = '';
 
