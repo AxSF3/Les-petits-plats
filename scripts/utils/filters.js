@@ -313,6 +313,13 @@ apparatusChevron.addEventListener("click", () => {
 
 			apparatus = result.map(recipe => recipe.appliance)
 			apparatus = [...new Set([].concat(...apparatus))].sort()
+
+			// Enlever de la liste l'ingrédient sur lequel on a cliqué
+			selectedFilters.forEach((selectedFilter) => {
+   
+				apparatus.splice(apparatus.indexOf(selectedFilter),1)
+						
+			});
 	
 			apparatusResult.innerHTML = "";
 	
@@ -498,6 +505,13 @@ ustensilsChevron.addEventListener("click", () => {
 				
 				ustensils = result.map(recipe => recipe.ustensils.map(ustensil => ustensil))
 				ustensils = [...new Set([].concat(...ustensils))].sort();
+
+				// Enlever de la liste l'ingrédient sur lequel on a cliqué
+				selectedFilters.forEach((selectedFilter) => {
+   
+					ustensils.splice(ustensils.indexOf(selectedFilter),1)
+						
+				});
 		
 				ustensilsResult.innerHTML = "";
 		
