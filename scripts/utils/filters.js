@@ -118,10 +118,17 @@ ingredientChevron.addEventListener("click", () => {
 
 		// Si il y a 2 caractères (donc plus de recherche) mais qu'il y a un filtre, 
 		// afficher la liste en fonction du filtre séléctionné
-	  } else if(globalSearchBar.value.length === 2 && result) {
+	  } else if(globalSearchBar.value.length <= 2 && result) {
 		
 		ingredients = result.map(recipe => recipe.ingredients.map(ingredient => ingredient.ingredient))
 		ingredients = [...new Set([].concat(...ingredients))].sort()
+
+		// Enlever de la liste l'ingrédient sur lequel on a cliqué
+		selectedFilters.forEach((selectedFilter) => {
+   
+			ingredients.splice(ingredients.indexOf(selectedFilter),1)
+						
+		});
 
 		ingResult.innerHTML = "";
 
@@ -302,7 +309,7 @@ apparatusChevron.addEventListener("click", () => {
 
 			// Si il y a 2 caractères (donc plus de recherche) mais qu'il y a un filtre, 
 			// afficher la liste en fonction du filtre séléctionné
-		  } else if(globalSearchBar.value.length === 2 && result) {
+		  } else if(globalSearchBar.value.length <= 2 && result) {
 
 			apparatus = result.map(recipe => recipe.appliance)
 			apparatus = [...new Set([].concat(...apparatus))].sort()
@@ -487,7 +494,7 @@ ustensilsChevron.addEventListener("click", () => {
 
 				// Si il y a 2 caractères (donc plus de recherche) mais qu'il y a un filtre, 
 				// afficher la liste en fonction du filtre séléctionné
-			  } else if(globalSearchBar.value.length === 2 && result) {
+			  } else if(globalSearchBar.value.length <= 2 && result) {
 				
 				ustensils = result.map(recipe => recipe.ustensils.map(ustensil => ustensil))
 				ustensils = [...new Set([].concat(...ustensils))].sort();
